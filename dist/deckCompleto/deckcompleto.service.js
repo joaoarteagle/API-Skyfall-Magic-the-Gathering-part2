@@ -22,7 +22,7 @@ let DeckCompletoService = class DeckCompletoService {
         this.httpService = httpService;
         this.deckModel = deckModel;
     }
-    async getCommanderAndDeck(nomeComandante) {
+    async getCommanderAndDeck(userName, nomeComandante) {
         const commanderUrl = `https://api.magicthegathering.io/v1/cards?name=${encodeURIComponent(nomeComandante)}`;
         const commanderResponse = await this.httpService.get(commanderUrl).toPromise();
         const commander = commanderResponse.data.cards[0];
@@ -34,12 +34,15 @@ let DeckCompletoService = class DeckCompletoService {
         const deckResponse = await this.httpService.get(deckUrl).toPromise();
         const deck = deckResponse.data.cards;
         const deckJson = {
+            userName,
             commander,
             deck,
         };
         const createdDeck = new this.deckModel(deckJson);
         await createdDeck.save();
         return deckJson;
+    }
+    async getDecks() {
     }
 };
 exports.DeckCompletoService = DeckCompletoService;

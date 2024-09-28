@@ -12,7 +12,7 @@ export class DeckCompletoService {
         @InjectModel('Deck') private deckModel: Model<DeckDocument>,
     ) { }
 
-    async getCommanderAndDeck(nomeComandante: string) {
+    async getCommanderAndDeck(userName: string, nomeComandante: string) {
         const commanderUrl = `https://api.magicthegathering.io/v1/cards?name=${encodeURIComponent(nomeComandante)}`;
 
         // Buscar o comandante
@@ -32,6 +32,7 @@ export class DeckCompletoService {
 
         // Gerar o JSON
         const deckJson = {
+            userName,
             commander,
             deck,
         };
@@ -41,5 +42,9 @@ export class DeckCompletoService {
         await createdDeck.save();
 
         return deckJson;
+    }
+
+    async getDecks(){
+
     }
 }

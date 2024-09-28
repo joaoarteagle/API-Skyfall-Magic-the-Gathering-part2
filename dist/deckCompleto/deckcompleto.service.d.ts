@@ -5,8 +5,10 @@ export declare class DeckCompletoService {
     private readonly httpService;
     private deckModel;
     constructor(httpService: HttpService, deckModel: Model<DeckDocument>);
-    getCommanderAndDeck(nomeComandante: string): Promise<{
+    getCommanderAndDeck(userName: string, nomeComandante: string): Promise<{
+        userName: string;
         commander: any;
         deck: any;
     }>;
+    getDecks(): Promise<void>;
 }

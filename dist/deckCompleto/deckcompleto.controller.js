@@ -19,17 +19,18 @@ let DeckCompletoController = class DeckCompletoController {
     constructor(deckCompletoService) {
         this.deckCompletoService = deckCompletoService;
     }
-    async getDeck(comandante) {
-        const deck = await this.deckCompletoService.getCommanderAndDeck(comandante);
+    async getDeck(comandante, user) {
+        const deck = await this.deckCompletoService.getCommanderAndDeck(user, comandante);
         return deck;
     }
 };
 exports.DeckCompletoController = DeckCompletoController;
 __decorate([
-    (0, common_1.Get)(':comandante'),
+    (0, common_1.Get)(':user:comandante'),
     __param(0, (0, common_1.Param)('comandante')),
+    __param(1, (0, common_1.Param)('user')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
 ], DeckCompletoController.prototype, "getDeck", null);
 exports.DeckCompletoController = DeckCompletoController = __decorate([
