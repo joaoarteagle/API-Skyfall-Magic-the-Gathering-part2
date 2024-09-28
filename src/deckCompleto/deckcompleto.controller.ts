@@ -5,9 +5,9 @@ import { DeckCompletoService } from './deckcompleto.service';
 export class DeckCompletoController {
   constructor(private readonly deckCompletoService: DeckCompletoService) {}
 
-  @Get(':user:comandante')
-  async getDeck(@Param('comandante') comandante: string, @Param('user') user:string) {
-    const deck = await this.deckCompletoService.getCommanderAndDeck(user, comandante);
+  @Get(':user')
+  async getDeck(@Param('user') user:string) {
+    const deck = await this.deckCompletoService.getCommanderAndDeck(user);
     return deck;
   }
 }

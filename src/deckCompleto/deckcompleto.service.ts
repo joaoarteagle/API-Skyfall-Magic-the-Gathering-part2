@@ -12,8 +12,8 @@ export class DeckCompletoService {
         @InjectModel('Deck') private deckModel: Model<DeckDocument>,
     ) { }
 
-    async getCommanderAndDeck(userName: string, nomeComandante: string) {
-        const commanderUrl = `https://api.magicthegathering.io/v1/cards?name=${encodeURIComponent(nomeComandante)}`;
+    async getCommanderAndDeck(userName: string) {
+        const commanderUrl = `https://api.magicthegathering.io/v1/cards/random}`;
 
         // Buscar o comandante
         const commanderResponse = await this.httpService.get(commanderUrl).toPromise();

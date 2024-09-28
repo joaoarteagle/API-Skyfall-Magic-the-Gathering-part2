@@ -22,8 +22,8 @@ let DeckCompletoService = class DeckCompletoService {
         this.httpService = httpService;
         this.deckModel = deckModel;
     }
-    async getCommanderAndDeck(userName, nomeComandante) {
-        const commanderUrl = `https://api.magicthegathering.io/v1/cards?name=${encodeURIComponent(nomeComandante)}`;
+    async getCommanderAndDeck(userName) {
+        const commanderUrl = `https://api.magicthegathering.io/v1/cards/random}`;
         const commanderResponse = await this.httpService.get(commanderUrl).toPromise();
         const commander = commanderResponse.data.cards[0];
         if (commanderResponse.data.cards.length === 0) {
